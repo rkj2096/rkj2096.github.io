@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Java Versions
-image: 'https://picsum.photos/500/300'
+image: 'https://picsum.photos/id/2/500/300'
 category: Programming Language
 ---
 Lets explore the key Java features introduced across various versions:

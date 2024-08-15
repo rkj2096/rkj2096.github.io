@@ -1,7 +1,7 @@
 ---
 layout: project
 title: Information Dispersal Algorithm
-image: 'https://picsum.photos/800/400'
+image: 'https://picsum.photos/id/6/800/400?grayscale'
 category: Algorithm
 tags:
   - IDA

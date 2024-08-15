@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Getting Started With golang
-image: 'https://picsum.photos/500/300'
+image: 'https://picsum.photos/id/8/500/300'
 category: Programming Language
 ---
 ### Getting Started with Go: A Beginner's Guide

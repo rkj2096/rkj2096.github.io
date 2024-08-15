@@ -1,7 +1,7 @@
 ---
 layout: project
 title: Citation King
-image: 'https://picsum.photos/900/400'
+image: 'https://picsum.photos/id/5/900/400?grayscale'
 category: Research
 tags:
   - google-scholar
