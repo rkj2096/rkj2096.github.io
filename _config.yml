@@ -1,5 +1,5 @@
 title: Rohit
-logo: /assets/images/logo.avif
+logo: /assets/images/logo.ai
 baseurl: /
 
 typewriter_effect: false
@@ -37,5 +37,5 @@ defaults:
   - scope:
       path: ""
     values:
-      author: "Mr. Hyde"
-      time: "2 min"
+      author: "Rohit Kumar"
+      time: "5 min"
