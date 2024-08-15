@@ -1,10 +1,9 @@
 ---
 layout: post
-title: Chroot
+title: Chroot System Call
 image: 'https://picsum.photos/500/300'
 category: OS
 ---
-
 A chroot (change root) is a Unix system call that changes the apparent root directory for a process and its children. It creates an isolated environment, often used for testing, development, or containing potentially untrusted programs.
 
 ``` c

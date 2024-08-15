@@ -2,7 +2,7 @@ title: Rohit
 logo: /assets/images/logo.avif
 baseurl: /
 
-typewriter_effect: true
+typewriter_effect: false
 
 collections:
   projects:
