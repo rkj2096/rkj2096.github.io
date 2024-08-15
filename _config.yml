@@ -1,6 +1,6 @@
-title: Jekyll Theme
+title: Rohit
 logo: /assets/images/logo.avif
-baseurl: /awesome-jekyll-theme
+baseurl: /
 
 typewriter_effect: true
 
@@ -9,12 +9,12 @@ collections:
     output: true
 
 rrss:
-  email: "example@example.cl"
-  github: "https://github.com/"
-  telegram: "https://t.me/"
-  stackoverflow: "https://stackoverflow.com"
-  discord: "https://discord.com/"
-  mastodon: "https://lile.cl/"
+  email: "rkj2096@gmail.com"
+  github: "https://github.com/rkj2096"
+  # telegram: "https://t.me/"
+  stackoverflow: "https://stackoverflow.com/rkj2096"
+  discord: "https://discord.com/rkj2096"
+  # mastodon: "https://lile.cl/"
 
 plugins:
   - jekyll-archives
