@@ -1,90 +1,129 @@
 ---
 layout: post
 title: Getting Started With golang
-image: 'https://picsum.photos/id/8/500/300'
+image: /assets/images/golang.png
 category: Programming Language
 ---
 ### Getting Started with Go: A Beginner's Guide
 
-In this blog, we'll explore the basics of Go and why it might be the right choice for your next coding adventure.
+While working at TSMC as a Software Engineer, I joined the EBO Mask Defect Workflow project to improve the current manual process, bring transparency, and make the process efficient and resilient. In this project, we used Golang for our backend service.
 
-#### Why Learn Go?
+At that time, I had not worked with Golang before, so I took a week to learn about Golang and build a few small projects. I had previously worked with C/C++, Python, Java, JavaScript, and other languages, so I didn't have much difficulty learning it. I found its syntax very similar to C. However, some things were totally different, like error handling, which is quite distinct (you might say it’s similar to C, but it’s not). Golang doesn't have the concept of try and catch. Concurrency is on a completely different level; things like goroutines and synchronization primitives like channels and select can be used to replace (or at least partially replace) traditional primitives like locks, mutexes, semaphores, and conditional variables. Additionally, defer statement (executed after their surrounding statements have been executed, in LIFO order).
 
-1. **Simplicity**: Go’s syntax is clean and easy to understand. It reduces the complexity often found in other languages, making it beginner-friendly.
-  
-2. **Performance**: Go is a compiled language, which means it’s fast. It’s built to handle high-performance tasks, making it ideal for backend development, cloud services, and more.
-  
-3. **Concurrency**: Go has in-built support for concurrent programming, allowing you to run multiple tasks simultaneously. This is especially useful in today’s multi-core processor world.
+This blog is a note that I made while leaning `golang`. This isn't complete yet. 
+Here’s the corrected version of your text:
 
-4. **Strong Standard Library**: Go comes with a powerful standard library that covers everything from web servers to cryptography, so you can build a variety of applications without needing third-party packages.
+---
 
-#### Setting Up Go
+## Golang
+Compiled, statically typed, strongly typed language
 
-Before diving into coding, you need to set up your Go environment. Here's a quick guide:
+## Declaration
+- `var a int`  // initialized with zero value 
+> In `Go`, there is a concept of zero value. There is a zero value for all primitive types: for `int`, the zero value is 0, and for `bool`, the zero value is `false`.
 
-1. **Install Go**: Download and install Go from [golang.org](https://golang.org/dl/). The installation process is straightforward and well-documented for all major operating systems.
+### Short Declaration
+- `a := 2`  // only inside a function, type is inferred from value at compile time
 
-2. **Set Up Your Workspace**: Go expects a certain workspace structure. Typically, you’ll have a `src` directory where your code lives. This setup ensures that Go's tools work smoothly.
+### Parallel Assignment
+- `x, y := 1, 3 ` // like Python
 
-3. **Write Your First Program**: Create a new directory for your project. Inside it, create a file named `main.go`. Open it in your favorite text editor and add the following code:
+## Memory Allocation
+- `new(T)` // returns `*T`, a pointer, allocated with the zero value of `T`
+- `make([]T, len, cap)` // returns `[]T`, used for slices, maps, channels 
+- `T{}` // composite literal; instead of `new`, can be used to initialize, and is favored over `new`
 
-   ```go
-   package main
+## Array/Slice
+- `[10]int` // array, size is also a part of the array type, `[5]int` and `[10]int` are of different data types 
+- `[]int` // slice, we can think of this as a vector in C++ or an ArrayList in Java
+> Favored over arrays because most of the time we don't know the size in advance.
+> `append([]int, int)` adds an element to the end of a slice
+> `delete([]int, int)` deletes the element at the `i`th index
+> `nil` is the zero value of a slice
 
-   import "fmt"
+## Map
+- `map[key-type]value-type` // e.g., `map[int]string`
+- `m := make(map[int]string)` // create an empty map
+- `m[1] = 'value'` // set key-value pair
+- `for key, value := range m` // iterate over the map `m`
+- `delete(map, key)` // delete entry with `key=key`
 
-   func main() {
-       fmt.Println("Hello, Go!")
-   }
-   ```
+## Type
+```go
+bool
+string
+int  int8  int16  int32  int64
+uint uint8 uint16 uint32 uint64 uintptr
+byte // alias for uint8
+rune // alias for int32
+     // represents a Unicode code point
+float32 float64
+complex64 complex128
+```
 
-   Save the file, then open your terminal and navigate to your project directory. Run the program with the command:
+### Type Conversion
+- `type(value)` // e.g., `int(4.2)`
 
-   ```bash
-   go run main.go
-   ```
+### Type Assertion
+- `val, ok := t.(type)`
 
-   You should see `Hello, Go!` printed in your terminal.
+### Type Alias
+- `type myint int` // like typedef in C
 
-#### Basic Concepts in Go
+### Any Type
+- `interface{}` // `any` is an alias for `interface{}`, if you want to use the value of any type, you need to do type assertion first
 
-1. **Packages**: Go organizes code into packages, which makes it easy to manage dependencies and reuse code. The `main` package is special because it defines the entry point of a Go application.
+### Constant
+- `const Pi = 3.14`
 
-2. **Variables and Types**: Go is statically typed, meaning you need to declare the type of each variable. For example:
+## Control Blocks 
+- `if-else`
+```go
+if InitSimpleStatement; Condition {
+	// do something
+} else {
+	// do something
+}
+```
+- `for`
+```go
+for InitSimpleStatement; Condition; PostSimpleStatement {
+	// do something
+}
+```  
+- `for-range`
+```go
+for i := range integer|slice|map|channel|string {
+	// do something
+}
+```
+- `switch-case` // no need for `break`, only one of the cases will be executed
+```go
+switch InitSimpleStatement; CompareOperand0 {
+case CompareOperandList1:
+	// do something
+...
+default:
+	// do something
+}
+```
+- `goto` // `goto` statement with a long history; while most modern programming languages provide `goto`, it is considered that control statements like `if-else`, `for-loop`, and `switch-case` are enough to express any logic. `goto` makes code less readable and more complex, hence there is no need for it in modern high-level programming languages.
 
-   ```go
-   var message string = "Hello, Go!"
-   ```
+- `select-case` // it is specially designed for channels. You won't find this in other programming languages. Ref: [Go101 Article on Channels](https://go101.org/article/channel.html#select)
 
-   Go also supports type inference, so you can omit the type and let Go figure it out:
-
-   ```go
-   message := "Hello, Go!"
-   ```
-
-3. **Functions**: Functions in Go are first-class citizens. They’re defined using the `func` keyword:
-
-   ```go
-   func greet(name string) string {
-       return "Hello, " + name
-   }
-   ```
-
-4. **Control Structures**: Go includes standard control structures like `if`, `for`, and `switch`. However, Go doesn’t have a `while` loop; instead, it uses the `for` loop for all iterations.
-
-5. **Concurrency with Goroutines**: Go’s concurrency model is one of its standout features. You can start a new goroutine (a lightweight thread) with the `go` keyword:
-
-   ```go
-   go greet("Go!")
-   ```
-
-   This runs `greet` concurrently, allowing your program to perform multiple tasks simultaneously.
+## Code Blocks
+- `package` // a folder with a collection of files
+- `module` // collection of packages
+- `workspace` // collection of modules
+- `func` // functions like in C/C++/Python/JavaScript
+- `struct` // collection of fields like in C/C++
+- `interface` // similar to TypeScript
 
 #### Next Steps
 
-If want to further continue your journey in go land haha. You may want to looking to different libraries and project implementented in golang.
-Here are some useful resources for exploring common Go libraries and famous projects:
+If you want to further continue your journey in Go (haha), you may want to look into different libraries and projects implemented in Golang.  
 
+Here are some useful resources for exploring common Go libraries and famous projects:
 ### Common Go Libraries:
 1. **[Awesome Go](https://github.com/avelino/awesome-go)**: A curated list of Go frameworks, libraries, and software. It's a great place to find popular libraries for various tasks.
    
@@ -104,3 +143,7 @@ Here are some useful resources for exploring common Go libraries and famous proj
 5. **[Terraform](https://github.com/hashicorp/terraform)**: An open-source tool for building, changing, and versioning infrastructure safely and efficiently. It’s widely used in DevOps for infrastructure as code (IaC).
 
 These resources should give you a solid start in exploring the Go ecosystem!
+
+## Refrences 
+- https://go.dev/learn/
+- https://go101.org/article/control-flows.html
