@@ -90,8 +90,8 @@ struct task_struct {
 
     // More fields...
 };
+```
 
 \\
 \\
 Picture Source: Google Images
-```
