@@ -6,12 +6,11 @@ category: Programming Language
 ---
 ### Getting Started with Go: A Beginner's Guide
 
-While working at TSMC as a Software Engineer, I joined the EBO Mask Defect Workflow project to improve the current manual process, bring transparency, and make the process efficient and resilient. In this project, we used Golang for our backend service.
+While working at TSMC as a Software Engineer, I joined a new project and in this project we were using Golang for our backend service.
 
 At that time, I had not worked with Golang before, so I took a week to learn about Golang and build a few small projects. I had previously worked with C/C++, Python, Java, JavaScript, and other languages, so I didn't have much difficulty learning it. I found its syntax very similar to C. However, some things were totally different, like error handling, which is quite distinct (you might say it’s similar to C, but it’s not). Golang doesn't have the concept of try and catch. Concurrency is on a completely different level; things like goroutines and synchronization primitives like channels and select can be used to replace (or at least partially replace) traditional primitives like locks, mutexes, semaphores, and conditional variables. Additionally, defer statement (executed after their surrounding statements have been executed, in LIFO order).
 
 This blog is a note that I made while leaning `golang`. This isn't complete yet. 
-Here’s the corrected version of your text:
 
 ---
 
