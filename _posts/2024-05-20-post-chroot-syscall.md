@@ -6,10 +6,10 @@ category: OS
 ---
 While doing my seminar course at IIT bombay (it's like a litrature survey) on Serverless architecture also known as Function-as-a-Service is yet another type of cloud service provided by public cloud service provides such as AWS (lambda), GCP(Google function) and AWS(Azure functions). 
 
-I came across chroot system call while reading this paper `SOCK: Rapid Task Provisioning with Serverless-Optimized Containers` by Edward Oakes et al. It has proposed lightweight isolation as opposed to solve the problem of `coldstart` (this is another may be will discuss in a seperate blog). A part of solution is to use chroot (latency < 1μs) to provide isolation as opposed to namespace isolation (IPC and mount namespace latency > 10ms). At the time though I was aware of chroot syscall but I didn't know how it works under the hood. So, I started looking into the implementation of choor and it's working.
+I came across chroot system call while reading this paper `SOCK: Rapid Task Provisioning with Serverless-Optimized Containers` by Edward Oakes et al. It has proposed lightweight isolation as opposed to namespace isolation to solve the problem of `coldstart` (this is another topic may be will discuss in a seperate blog). A part of solution is to use chroot (latency < 1μs) to provide isolation as instead to namespace isolation (IPC and mount namespace latency > 10ms). At the time though I was aware of chroot syscall but I didn't know how it works under the hood. So, I started looking into the implementation of chroot and it's working.
 
 ## what is chroot?
-Chroot changes the apparent root directory for a process and its children. It creates an isolated environment, often used for testing, development, or containing potentially untrusted programs.
+chroot changes the apparent root directory for a process and its children. It creates an isolated environment, often used for testing, development, or containing potentially untrusted programs.
 
 ``` c
 #include <unistd.h>
