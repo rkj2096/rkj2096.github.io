@@ -1,10 +1,15 @@
 ---
 layout: post
 title: Chroot System Call
-image: 'https://picsum.photos/id/2/500/300?blur=1'
+image: '/assets/images/chroot.jpg'
 category: OS
 ---
-A chroot (change root) is a Unix system call that changes the apparent root directory for a process and its children. It creates an isolated environment, often used for testing, development, or containing potentially untrusted programs.
+While doing my seminar course at IIT bombay (it's like a litrature survey) on Serverless architecture also known as Function-as-a-Service is yet another type of cloud service provided by public cloud service provides such as AWS (lambda), GCP(Google function) and AWS(Azure functions). 
+
+I came across chroot system call while reading this paper `SOCK: Rapid Task Provisioning with Serverless-Optimized Containers` by Edward Oakes et al. It has proposed lightweight isolation as opposed to solve the problem of `coldstart` (this is another may be will discuss in a seperate blog). A part of solution is to use chroot (latency < 1μs) to provide isolation as opposed to namespace isolation (IPC and mount namespace latency > 10ms). At the time though I was aware of chroot syscall but I didn't know how it works under the hood. So, I started looking into the implementation of choor and it's working.
+
+## what is chroot?
+Chroot changes the apparent root directory for a process and its children. It creates an isolated environment, often used for testing, development, or containing potentially untrusted programs.
 
 ``` c
 #include <unistd.h>
@@ -36,9 +41,10 @@ int main(int argc, char *argv[]) {
 }
 ```
 
-# How it works ?
-The chroot system call is implemented in the Linux kernel source code in the file `fs/open.c`.
-The `struct fs_struct` is a data structure in the Linux kernel that holds the filesystem-related context of a process. This includes information such as the current working directory, the root directory, and the umask. Each process in the kernel has a pointer to an fs_struct, which encapsulates this context. The chroot syscall bsically update the root directory of the process by change this fs_struct inside task_struct.
+# how it works ?
+The chroot is implemented in the Linux kernel source code in the file `fs/open.c`. You can look it on the github linuc repository. Let's dive into it's working
+
+So there is `struct fs_struct`, a data structure in the Linux kernel that holds the filesystem-related `context` of a process. This includes information such as the current working directory, the root directory, and the umask. **Each process in the kernel has a pointer to an fs_struct, which encapsulates this context**. The chroot syscall bsically update the root directory of the process by changing this fs_struct inside task_struct. That's it, it's as simple as that.
 
 ```c
 struct fs_struct {
@@ -85,4 +91,7 @@ struct task_struct {
     // More fields...
 };
 
+\\
+\\
+Picture Source: Google Images
 ```
