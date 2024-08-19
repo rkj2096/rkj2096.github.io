@@ -4,9 +4,10 @@ title: Fast packet I/O
 image: '/assets/images/netmap.jpg'
 category: Programming Language
 ---
-
 Netmap is a framework for fast packet I/O from userspace. 
-OS kernel implements TCP/IP stack protocols up to the transport layer. While the applications layer protocols (HTTP, FPT, SSH, SMTP etc) are implemented in userspace. Per packet dynamic memory allocation, system calls overhead and memory allocation make traditional Linux network stack inefficient. Netmap tries to solve this problem make the packet data-path efficient. \\
+
+OS kernel implements TCP/IP stack protocols up to the transport layer. While the applications layer protocols (HTTP, FPT, SSH, SMTP etc) are implemented in userspace. Per packet dynamic memory allocation, system calls overhead and memory allocation make traditional Linux network stack inefficient. Netmap tries to solve this problem make the packet data-path efficient.
+
 ## Netmap uses these techniques to get it's high performance 
 - a lightweight metadata representation, processing
 of large number of packets in each system call, thus
