@@ -24,7 +24,7 @@ The argument contains the interface name, and optionally the indication of which
 we want to control through this file descriptor. 
 
 ## Other fast packet I/O solutions
-XDP(express data path) is an high-performance datapath used to send and receive packets by bypassing os kernel networing stack. It uses e-BPF(extented Berkeley Packet Filter), e-BPF allows us to safely extends the functionalities of kernel with changing the kernel source code or loading kernel module. In short e-BPF is an in-kernel virtual machine, ability to run user-supplied program inside kernel.
+XDP(express data path) is an high-performance data-path used to send and receive packets by bypassing os kernel networking stack. It uses e-BPF(extended Berkeley Packet Filter), it is an in-kernel virtual machine, ability to run user-supplied program inside kernel. In short, e-BPF allows us to safely extends the functionalities of kernel without changing the kernel source code or loading kernel module
 
 
 ## References
