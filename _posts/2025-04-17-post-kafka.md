@@ -1,9 +1,8 @@
 ---
 layout: post
 title: Kafka In and Out
-date: 2025-04-17
-image: '/assets/images/secrets.png'
-category: Event Streaming, PubSub
+image: '/assets/images/kafka.png'
+category: Kafka
 ---
 
 Kafka is a distributed event streaming platform capable of handling trillions of events a day. It is used for building real-time data pipelines and streaming applications. It is horizontally scalable, fault-tolerant, and runs in production in thousands of companies.
@@ -20,7 +19,7 @@ Now let's see what makes Kafka horizontally scalable and fault tolerant.
 - **Fault Tolerance**: Kafka allows us to create multiple replicas of each partition. The replication factor is configured at the topic level. Each partition has one leader and multiple followers. The leader handles all reads and writes, while the followers replicate the data. There are two important settings to consider:
   - **min.insync.replicas**: minimum number of replicas that must acknowledge a write for it to be considered successful. If the number of in-sync replicas falls below this threshold, the producer will receive an error `NotEnoughReplicasException`.
   - **acks**: no of acknowledgments the producer requires from the broker before considering a request complete. It can be set to 0 (no acknowledgment), 1 (leader acknowledgment), or all (all in-sync replicas acknowledgment).
-- ![Replication Diagram for acks=all](image.png)
+- ![Replication Diagram for acks=all](/assets/images/kafka.png)
 
 That's it for now. In next post, I'll deep dive into Producers, Consumers, Topics, Consumer Groups, Offsets, Serialization, and Deserialization.
 
