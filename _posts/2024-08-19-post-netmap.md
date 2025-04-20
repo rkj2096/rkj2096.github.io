@@ -2,7 +2,7 @@
 layout: post
 title: Fast packet I/O
 image: '/assets/images/netmap.jpg'
-category: Programming Language
+category: OS
 ---
 Netmap is a framework for fast packet I/O from userspace. 
 
