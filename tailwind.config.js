@@ -8,6 +8,7 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
+      'fira': ['Fira Code'],
       'sans': ['Raleway'],
       'mulish': ["Mulish"]
     },
@@ -20,7 +21,12 @@ module.exports = {
         '2xl': '6rem',
       },
     },
-    extend: {},
+    extend: {
+      colors: {
+        primary: '#1DA1F2',
+        secondary: '#14171A',
+      },
+    },
   },
   plugins: [
     require('@tailwindcss/typography')
